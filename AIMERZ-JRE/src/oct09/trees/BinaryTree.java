@@ -11,10 +11,7 @@ public class BinaryTree {
     }
 
     public void insert(int data) {
-        // Create a new node
         Node newNode = new Node(data);
-
-        // If the tree is empty, the new node becomes the root
         if (root == null) {
             root = newNode;
             return;
@@ -26,15 +23,13 @@ public class BinaryTree {
 
         while (!queue.isEmpty()) {
             Node current = queue.poll();
-
             // If the left child is empty, insert the new node here
             if (current.left == null) {
                 current.left = newNode;
                 break;
             } else {
-                queue.add(current.left);  // Otherwise, add left child to the queue
+                queue.add(current.left);
             }
-
             // If the right child is empty, insert the new node here
             if (current.right == null) {
                 current.right = newNode;
