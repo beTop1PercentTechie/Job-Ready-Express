@@ -17,22 +17,17 @@ class BinarySearchTree {
             root = new Node(value);
             return root;
         }
-
-        if (value < root.getData())
+        if (value <= root.getData())
             root.setLeft(insertRecord(root.getLeft(), value));
         else if (value > root.getData())
             root.setRight(insertRecord(root.getRight(), value));
-
-        // Return the (unchanged) node pointer
         return root;
     }
 
-    // In-order traversal of the tree to print the values
     public void inorder() {
         inorderRec(root);
     }
 
-    // Recursive in-order traversal
     void inorderRec(Node root) {
         if (root != null) {
             inorderRec(root.getLeft());
