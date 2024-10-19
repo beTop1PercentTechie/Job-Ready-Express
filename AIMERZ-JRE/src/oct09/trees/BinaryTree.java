@@ -1,7 +1,5 @@
 package oct09.trees;
 
-import java.net.StandardSocketOptions;
-import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -15,16 +13,16 @@ public class BinaryTree {
 
     public void inorder(Node root){
         if(root == null) return;
-        inorder(root.left);
-        System.out.print(root.data + " ");
-        inorder(root.right);
+        inorder(root.getLeft());
+        System.out.print(root.getData() + " ");
+        inorder(root.getRight());
     }
 
     public void preorder(Node root){
         if(root == null) return;
-        System.out.print(root.data + " ");
-        preorder(root.left);
-        preorder(root.right);
+        System.out.print(root.getData() + " ");
+        preorder(root.getLeft());
+        preorder(root.getRight());
     }
 
     public void levelOrder(Node root){
@@ -33,20 +31,20 @@ public class BinaryTree {
         q.offer(root);
         while(!q.isEmpty()){
             Node cur = q.poll();
-            System.out.print(cur.data + " ");
-            if(cur.right!=null) q.offer(cur.right);
-            if(cur.left!=null) q.offer(cur.left);
+            System.out.print(cur.getData() + " ");
+            if(cur.getRight()!=null) q.offer(cur.getRight());
+            if(cur.getLeft()!=null) q.offer(cur.getLeft());
         }
     }
 
     public int height(Node root){
         if(root == null) return -1;
-        return Math.max(height(root.left),height(root.right))+1;
+        return Math.max(height(root.getLeft()),height(root.getRight()))+1;
     }
 
     public int size(Node root){
         if(root == null) return 0;
-        return size(root.left)+size(root.right)+1;
+        return size(root.getLeft())+size(root.getRight())+1;
     }
 
     public void insert(int data) {
@@ -63,18 +61,18 @@ public class BinaryTree {
         while (!queue.isEmpty()) {
             Node current = queue.poll();
             // If the left child is empty, insert the new node here
-            if (current.left == null) {
-                current.left = newNode;
+            if (current.getLeft()== null) {
+                current.setLeft(newNode);
                 break;
             } else {
-                queue.offer(current.left);
+                queue.offer(current.getLeft());
             }
             // If the right child is empty, insert the new node here
-            if (current.right == null) {
-                current.right = newNode;
+            if (current.getRight() == null) {
+                current.setRight(newNode);
                 break;
             } else {
-                queue.offer(current.right);  // Otherwise, add right child to the queue
+                queue.offer(current.getRight());  // Otherwise, add right child to the queue
             }
         }
     }
