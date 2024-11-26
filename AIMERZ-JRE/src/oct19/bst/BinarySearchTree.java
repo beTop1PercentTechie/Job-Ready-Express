@@ -35,5 +35,28 @@ class BinarySearchTree {
             inorderRec(root.getRight());
         }
     }
+
+    public void morrisInorder(Node root){
+        Node cur = root;
+        while(cur != null){
+            if(cur.getLeft() == null){
+                System.out.print(cur.getData() + " ");
+                cur = cur.getRight();
+            }else{
+                Node temp = cur.getLeft();
+                while(temp.getRight()!=null && temp.getRight() != cur){
+                    temp = temp.getRight();
+                }
+                if(temp.getRight() == null){
+                    temp.setRight(cur);
+                    System.out.print(cur.getData());
+                }
+                else{
+                    temp.setRight(null);
+                    cur = cur.getRight();
+                }
+            }
+        }
+    }
 }
 
